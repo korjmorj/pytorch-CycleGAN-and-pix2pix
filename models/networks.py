@@ -356,7 +356,7 @@ class ResnetGenerator(nn.Module):
 
         for i in range(n_downsampling):  # add upsampling layers
             mult = 2 ** (n_downsampling - i)
-            model += [nn.Upsample(scale_factor = 2, mode='bilinear'),
+            model += [nn.Upsample(scale_factor = 2, mode='nearest'),
                           nn.ReflectionPad2d(1),
                           nn.Conv2d(ngf * mult, int(ngf * mult / 2),
                                              kernel_size=3, stride=1, padding=0),
